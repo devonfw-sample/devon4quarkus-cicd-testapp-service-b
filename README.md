@@ -27,9 +27,10 @@ With the current configuration, "dev" mode runs using H2 database and "prod" mod
 
 Before running the application, configure the below DB credentials in application.properties file.
 
+```script
 **quarkus.datasource.username = demo
-
 **quarkus.datasource.password = demo
+```
 
 To pull a postgreSQL docker image, use docker-compose.yaml from the current directory.
 
