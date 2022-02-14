@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "User")
+@Table(name = "hello_user")
 public class UserEntity extends ApplicationPersistenceEntity {
 
   private String firstname;

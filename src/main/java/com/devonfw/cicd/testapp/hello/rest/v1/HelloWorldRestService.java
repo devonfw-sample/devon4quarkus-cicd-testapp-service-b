@@ -37,7 +37,7 @@ public class HelloWorldRestService {
   @Produces(MediaType.APPLICATION_JSON)
   public String hello() {
 
-    Optional<UserEntity> optionalEntity = this.userRepository.findById(0L);
+    Optional<UserEntity> optionalEntity = this.userRepository.findById(1L);
     if (optionalEntity.isPresent()) {
       UserEntity entity = optionalEntity.get();
       return entity.getFirstname() + " " + entity.getLastname();

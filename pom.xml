@@ -34,6 +34,11 @@
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-jdbc-h2</artifactId>
     </dependency>
+    <!-- JDBC driver dependencies -->
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-jdbc-postgresql</artifactId>
+    </dependency> 
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-resteasy</artifactId>
@@ -59,7 +64,7 @@
       <version>0.2.0</version>
       <scope>provided</scope>
     </dependency>
-    
+
    <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-spring-data-jpa</artifactId>
@@ -83,8 +88,8 @@
       <artifactId>mapstruct</artifactId>
       <version>${mapstruct.version}</version>
       <scope>provided</scope>
-    </dependency>    
-    
+    </dependency>
+
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-junit5</artifactId>
