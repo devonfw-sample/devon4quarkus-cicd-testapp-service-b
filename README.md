@@ -19,6 +19,19 @@ or
 
 You can run tests from your IDE or via Maven. Simply run ./mvnw test or ./mvnw package
 
+## DB support
+
+Currently, the application can support H2 database as well as PostgreSQL. It can can be configured in application.properties.
+
+With the current configuration, "dev" mode runs using H2 database and "prod" mode on PostgreSQL.
+
+Before running the application, configure the below DB credentials in application.properties file.
+
+quarkus.datasource.username = demo
+quarkus.datasource.password = demo
+
+To pull a postgreSQL docker image, use docker-compose.yaml from the current directory.
+
 ## Packaging and running the application
 
 The application can be packaged using:
