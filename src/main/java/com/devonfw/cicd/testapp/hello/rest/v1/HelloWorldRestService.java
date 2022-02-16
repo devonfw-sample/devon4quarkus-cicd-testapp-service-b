@@ -68,7 +68,7 @@ public class HelloWorldRestService {
   @Path("/{name}")
   public String greeting(@PathParam String name) {
 
-    return name;
+    return "Hello " + name + "!";
   }
 
 }
