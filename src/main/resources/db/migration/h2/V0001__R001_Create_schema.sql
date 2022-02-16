@@ -1,0 +1,13 @@
+
+CREATE SEQUENCE HIBERNATE_SEQUENCE START WITH 10;
+
+
+-- *** User ***
+CREATE TABLE hello_user (
+  id BIGINT NOT NULL AUTO_INCREMENT,
+  modificationCounter INTEGER DEFAULT 0,
+  firstname VARCHAR (255) NULL,
+  lastname VARCHAR (255) NULL,
+  CONSTRAINT PK_User PRIMARY KEY(id)
+);
+
