@@ -19,6 +19,53 @@ or
 
 You can run tests from your IDE or via Maven. Simply run ./mvnw test or ./mvnw package
 
+## Database support
+
+Currently, the application can support H2 database as well as PostgreSQL. It can can be configured in application.properties.
+
+With the current configuration, "dev" mode runs using H2 database and "prod" mode on PostgreSQL.
+
+Before running the application, configure the below DB credentials in application.properties file.
+
+```script
+**quarkus.datasource.username = demo
+**quarkus.datasource.password = demo
+```
+
+To pull a postgreSQL docker image, use docker-compose.yaml from the current directory.
+
+## Using Container
+
+Build the package and follow the below steps to run the application using docker
+
+```shell script
+
+# builds the application docker image.
+docker build -f src/main/docker/Dockerfile.jvm -t quarkus/devon-quarkus-cicd-service-b-jvm .
+
+#creates the network to connect db from the application.
+docker network create demo
+
+#runs the postgres database.
+docker run  \
+     --name helloDB  \
+     --network demo --network-alias pgsql \
+     -p 5432:5432 \
+     -e POSTGRES_USER=demo \
+     -e POSTGRES_PASSWORD=demo \
+     -e POSTGRES_DB=demo \
+    postgres
+
+#runs the application
+docker run -i --rm \
+    -p 8081:8081 \
+    --network demo \
+    -e quarkus.datasource.username=demo \
+    -e quarkus.datasource.password=demo \
+    quarkus/devon-quarkus-cicd-service-b-jvm
+
+```
+
 ## Packaging and running the application
 
 The application can be packaged using:
