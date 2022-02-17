@@ -34,23 +34,19 @@ Before running the application, configure the below DB credentials in applicatio
 
 To pull a postgreSQL docker image, use docker-compose.yaml from the current directory.
 
-## Using Container 
+## Using Container
 
-Follow the below steps to run the application using docker.
+Build the package and follow the below steps to run the application using docker
 
-```script
+```shell script
 
+# builds the application docker image.
 docker build -f src/main/docker/Dockerfile.jvm -t quarkus/devon-quarkus-cicd-service-b-jvm .
 
+#creates the network to connect db from the application.
 docker network create demo
 
-docker run -i --rm \
-    -p 8081:8081 \
-    --network demo \
-    -e quarkus.datasource.username=demo \
-    -e quarkus.datasource.password=demo \
-    quarkus/devon-quarkus-cicd-service-b-jvm 
-
+#runs the postgres database.
 docker run  \
      --name helloDB  \
      --network demo --network-alias pgsql \
@@ -59,6 +55,14 @@ docker run  \
      -e POSTGRES_PASSWORD=demo \
      -e POSTGRES_DB=demo \
     postgres
+
+#runs the application
+docker run -i --rm \
+    -p 8081:8081 \
+    --network demo \
+    -e quarkus.datasource.username=demo \
+    -e quarkus.datasource.password=demo \
+    quarkus/devon-quarkus-cicd-service-b-jvm
 
 ```
 
